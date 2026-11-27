@@ -171,6 +171,22 @@
     "Search inside the pane you last clicked"
    ],
    [
+    "⌘B",
+    "Zen (diff only)"
+   ],
+   [
+    "⌘O",
+    "Open a local folder"
+   ],
+   [
+    "⌘1 / ⌘2",
+    "Jump to the list search / the Chat box"
+   ],
+   [
+    "⌘R",
+    "Refresh"
+   ],
+   [
     "⌃Tab",
     "Switch PRs"
    ],
@@ -179,8 +195,24 @@
     "Switch Chat tabs"
    ],
    [
+    "j / k",
+    "Next / previous file in the diff"
+   ],
+   [
+    "n",
+    "Next unread file"
+   ],
+   [
+    "v",
+    "Mark Viewed and go to the next unread"
+   ],
+   [
+    "s",
+    "Switch between Diff and Semantic diff"
+   ],
+   [
     "⌘ ,",
-    "Settings"
+    "Settings (keys can be changed here)"
    ]
   ],
   "demoNote": "Sample data. Nothing connects to GitHub.",
@@ -237,7 +269,67 @@
     ],
     "Here a prepared answer comes back. In the app, the CLI you picked reads the PR and answers."
    ]
-  }
+  },
+  "moreH": "Go further",
+  "moreLabel": "More",
+  "more": [
+   [
+    "hooks",
+    "Run your own commands before and after a review",
+    [
+     "A hook is a shell command that Lythe runs for one repository at two moments: <b>When reading starts</b> (your first Viewed mark or Chat question on a PR) and <b>When a review is sent</b> from Lythe. Use it to move a GitHub Projects card to In review, post to Slack, add a label, and so on. Reviews sent on github.com do not trigger it.",
+     "The easy way is to ask the PR's Chat, for example: “When I start reading, set this PR's Status to In review.” The AI looks up the IDs and answers with a shell command. Press <b>Register as hook</b> above that code block, choose when it runs, try it on the open PR, then register it.",
+     "<pre><code># When reading starts: set this PR's Status to \"In review\"\ngh project item-edit --id \"$LYTHE_ITEM_ID\" \\\n  --project-id PVT_xxx --field-id PVTSSF_xxx \\\n  --single-select-option-id 47fc9ee4</code></pre>",
+     "To write one by hand, use <b>Add a hook</b> in Settings › Repositories and searches. Registered hooks are listed there too, where you can edit, pause or remove them.",
+     "Lythe sets these environment variables:",
+     "<table class=\"keys\"><tr><td><code>LYTHE_EVENT</code></td><td><code>start</code> or <code>end</code></td></tr><tr><td><code>LYTHE_REPO</code></td><td><code>owner/repo</code></td></tr><tr><td><code>LYTHE_PR</code></td><td>PR number</td></tr><tr><td><code>LYTHE_PR_URL</code></td><td>PR URL</td></tr><tr><td><code>LYTHE_PR_ID</code></td><td>PR node id (for <code>gh api graphql</code>)</td></tr><tr><td><code>LYTHE_HEAD</code></td><td>head commit SHA</td></tr><tr><td><code>LYTHE_ITEM_ID</code></td><td>the PR's GitHub Projects item id, when it is in exactly one Project</td></tr><tr><td><code>LYTHE_ITEMS</code></td><td>every <code>project-id=item-id</code>, one per line</td></tr><tr><td><code>LYTHE_REVIEW</code></td><td><code>APPROVE</code>, <code>REQUEST_CHANGES</code> or <code>COMMENT</code> (sent reviews only)</td></tr></table>",
+     "Hooks run in your login shell from your home directory, never inside the PR's code. They stop after 60 seconds. A failing hook never blocks the review: it runs after the review is sent, and Lythe shows the exit code and the last lines of output. Success is silent.",
+     "Commands run with your own <code>gh</code> sign-in. Changing a Projects field needs one more permission: <code>gh auth refresh -h github.com -s project</code>."
+    ]
+   ],
+   [
+    "local",
+    "Read your changes before opening a PR",
+    [
+     "Press <b>⌘O</b> and pick a git repository folder. Lythe shows everything from where you branched to your working tree, untracked files included, with the same diff, Viewed marks and line comments as a PR.",
+     "When you have written comments, <b>Hand over comments</b> hands them to Chat, or copies them as text you can paste into the coding session that made the change. Lythe itself never edits your code."
+    ]
+   ],
+   [
+    "hold",
+    "Put a PR on hold",
+    [
+     "Waiting on the author? Press <b>Hold</b> in the PR header. The PR leaves its group and waits in <b>On hold</b> at the bottom of the list.",
+     "It comes back by itself when the author pushes or replies, or when you are re-requested or mentioned. Nothing is written to GitHub."
+    ]
+   ],
+   [
+    "chat",
+    "More from Chat",
+    [
+     "Type <b>@</b> in the Chat box to attach the answer from another tab, for example to have Codex check what Claude said.",
+     "You can keep typing while the AI answers. Messages wait in a queue and go out when the answer finishes.",
+     "File locations in an answer, such as <code>src/a.ts:42</code>, are links. Clicking one opens that line in the diff.",
+     "The CLI's own tools (reading files, running commands, the web) follow that CLI's own settings, the same as in your terminal. Lythe's tools that write to GitHub, such as posting a review, ask you first."
+    ]
+   ],
+   [
+    "searches",
+    "Choose which PRs show up",
+    [
+     "By default the list pulls PRs you wrote, are assigned, or are asked to review, from every repository. In Settings › Repositories and searches you can add repositories (<code>owner/repo</code>, or just <code>owner</code> for everything they own) and more GitHub searches.",
+     "If your team keeps review due dates in GitHub Projects, choose the date field per repository there. PRs with a date move to the top of the list, soonest first. Reading Projects needs <code>gh auth refresh -h github.com -s read:project</code>."
+    ]
+   ],
+   [
+    "links",
+    "Open a PR from a link",
+    [
+     "Replace <code>https</code> with <code>lythe</code> in any GitHub PR URL, for example <code>lythe://github.com/owner/repo/pull/123</code>, and the PR opens in Lythe. Extra parts such as <code>/files</code> are fine.",
+     "Press <b>⌘B</b> for Zen: the list and Chat are put away so the diff gets the whole window. Touch the right edge to bring Chat back."
+    ]
+   ]
+  ]
  },
  "ja": {
   "navHome": "ホーム",
@@ -396,7 +488,7 @@
   "keys": [
    [
     "⌘P",
-    "PR・ファイルへ移る"
+    "PR・ファイルへ移動"
    ],
    [
     "⌘⇧P",
@@ -408,19 +500,51 @@
    ],
    [
     "⌘F",
-    "最後に押したペインの中を検索"
+    "最後にクリックしたペインの中を検索"
+   ],
+   [
+    "⌘B",
+    "Zen（差分だけにする）"
+   ],
+   [
+    "⌘O",
+    "ローカルのフォルダを開く"
+   ],
+   [
+    "⌘1 / ⌘2",
+    "一覧の検索へ / Chat の入力へ"
+   ],
+   [
+    "⌘R",
+    "取り直す"
    ],
    [
     "⌃Tab",
-    "PR を切り替える"
+    "PR を移る"
    ],
    [
     "⌥Tab",
-    "Chat のタブを切り替える"
+    "Chat のタブを移る"
+   ],
+   [
+    "j / k",
+    "差分で次・前のファイル"
+   ],
+   [
+    "n",
+    "次の未読のファイル"
+   ],
+   [
+    "v",
+    "Viewed にして次の未読へ"
+   ],
+   [
+    "s",
+    "差分と Semantic diff の切り替え"
    ],
    [
     "⌘ ,",
-    "設定"
+    "設定（キーの付け替えもここ）"
    ]
   ],
   "demoNote": "サンプルのデータです。GitHub にはつながりません。",
@@ -477,6 +601,66 @@
     ],
     "ここでは用意した答えが返ります。アプリでは、選んだ CLI が PR を読んで答えます。"
    ]
-  }
+  },
+  "moreH": "もっと使う",
+  "moreLabel": "ほかの機能",
+  "more": [
+   [
+    "hooks",
+    "レビューの前後に自分のコマンドを走らせる",
+    [
+     "hook は、リポジトリごとに登録するシェルのコマンドです。走るのは2回で、<b>読み始めたら</b>（その PR で初めて Viewed を付けたか、Chat に聞いたとき）と、Lythe から<b>レビューを送ったら</b>です。GitHub Projects のカードを In review に動かす、Slack に知らせる、ラベルを付ける、といった使い方ができます。github.com で送ったレビューでは走りません。",
+     "作るのは PR の Chat に頼むのが簡単です。たとえば「読み始めたらこの PR の Status を In review にしたい」と送ると、AI が ID を調べてシェルのコマンドで答えます。そのコードの上の <b>hook に登録</b> を押し、いつ走らせるかを選んで、開いている PR で試してから登録します。",
+     "<pre><code># 読み始めたら、この PR の Status を「In review」にする\ngh project item-edit --id \"$LYTHE_ITEM_ID\" \\\n  --project-id PVT_xxx --field-id PVTSSF_xxx \\\n  --single-select-option-id 47fc9ee4</code></pre>",
+     "手で書くときは、設定 › 対象と検索条件 の <b>hook を足す</b> から書きます。登録した hook もここに並び、直す・止める・外すができます。",
+     "コマンドには次の環境変数が入ります。",
+     "<table class=\"keys\"><tr><td><code>LYTHE_EVENT</code></td><td><code>start</code> か <code>end</code></td></tr><tr><td><code>LYTHE_REPO</code></td><td><code>owner/repo</code></td></tr><tr><td><code>LYTHE_PR</code></td><td>PR の番号</td></tr><tr><td><code>LYTHE_PR_URL</code></td><td>PR の URL</td></tr><tr><td><code>LYTHE_PR_ID</code></td><td>PR の node id（<code>gh api graphql</code> 用）</td></tr><tr><td><code>LYTHE_HEAD</code></td><td>head のコミット SHA</td></tr><tr><td><code>LYTHE_ITEM_ID</code></td><td>PR が入っている Project が1つのとき、その項目の id</td></tr><tr><td><code>LYTHE_ITEMS</code></td><td>全部の 「Project の id=項目の id」（1行に1つ）</td></tr><tr><td><code>LYTHE_REVIEW</code></td><td><code>APPROVE</code>・<code>REQUEST_CHANGES</code>・<code>COMMENT</code>（送ったときだけ）</td></tr></table>",
+     "hook はログインしたシェルで、ホームディレクトリから走ります。PR のコードの中では走りません。60 秒で止まります。失敗してもレビューは止めません。送ったときの hook は送れた後に走り、失敗したら終了コードと出力の最後の数行を出します。成功したときは何も出しません。",
+     "コマンドは自分の <code>gh</code> のログインで動きます。Projects の項目を書き換えるには、権限を1つ足します。<code>gh auth refresh -h github.com -s project</code>"
+    ]
+   ],
+   [
+    "local",
+    "PR を出す前に自分の変更を読む",
+    [
+     "<b>⌘O</b> で git のリポジトリのフォルダを選ぶと、ブランチを切った所から作業ツリーまで（未追跡のファイルも含む）の差分が出ます。差分・Viewed・行コメントは PR と同じように使えます。",
+     "コメントを書いたら <b>コメントを渡す</b> から Chat に渡すか、その変更を書いた開発セッションに貼る文としてコピーします。Lythe はコードを書き換えません。"
+    ]
+   ],
+   [
+    "hold",
+    "PR を保留にする",
+    [
+     "作者の対応待ちの PR は、PR のヘッダーの <b>保留</b> を押します。PR はグループから外れ、一覧のいちばん下の <b>保留</b> で待ちます。",
+     "作者が push するか返信したとき、またはレビューを頼み直されたかメンションされたときに、自動で戻ります。GitHub には何も書きません。"
+    ]
+   ],
+   [
+    "chat",
+    "Chat をもっと使う",
+    [
+     "Chat の入力欄で <b>@</b> を打つと、別のタブの答えを添付できます。Claude の答えを Codex に確かめさせる、といった使い方です。",
+     "AI が答えている間も打てます。送ったものはキューで待ち、答えが終わると送られます。",
+     "答えの中の <code>src/a.ts:42</code> のようなファイルの位置はリンクになります。押すと差分のその行を開きます。",
+     "CLI 自身の道具（ファイルを読む・コマンドを走らせる・Web）は、その CLI の設定に従います。ターミナルで使うときと同じです。Lythe の道具のうち GitHub に書くもの（レビューの投稿など）は、先に確認が出ます。"
+    ]
+   ],
+   [
+    "searches",
+    "一覧に出す PR を選ぶ",
+    [
+     "一覧には、自分が作者・担当・レビュー依頼先の PR が、全部のリポジトリから出ます。設定 › 対象と検索条件 で、リポジトリ（<code>owner/repo</code>、または <code>owner</code> だけでその持ち主の全部）や GitHub の検索条件を足せます。",
+     "チームが GitHub Projects でレビューの期日を管理しているなら、同じ所でリポジトリごとに日付の項目を選びます。期日のある PR が一覧の上に、近い順で並びます。Projects を読むには <code>gh auth refresh -h github.com -s read:project</code> が要ります。"
+    ]
+   ],
+   [
+    "links",
+    "リンクから開く・差分を広く読む",
+    [
+     "GitHub の PR の URL の <code>https</code> を <code>lythe</code> に打ち替えると（<code>lythe://github.com/owner/repo/pull/123</code>）、その PR が Lythe で開きます。<code>/files</code> などが付いていても開きます。",
+     "<b>⌘B</b> で Zen になり、一覧と Chat をしまって差分を窓いっぱいに出します。右の端に触れると Chat が出ます。"
+    ]
+   ]
+  ]
  }
 }

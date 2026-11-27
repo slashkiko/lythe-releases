@@ -126,12 +126,20 @@ def guide(lang, up):
     t = C[lang]
     side = f'<span class="lab">{t["gLabel"]}</span>' + "".join(
         f'<a href="#g{i + 1}">{i + 1}. {h}</a>' for i, (h, _, _) in enumerate(t["guide"])
+    ) + f'<span class="lab">{t["moreLabel"]}</span>' + "".join(
+        f'<a href="#{k}">{h}</a>' for k, h, _ in t["more"]
     ) + f'<a href="#keys">{t["keysH"]}</a>'
     steps = "".join(
         f'<section class="gstep" id="g{i + 1}"><div class="hd"><span class="num">{i + 1}</span><h2>{h}</h2></div>'
         f'<div class="txt">{"".join(f"<p>{p}</p>" for p in ps)}</div>'
         f'{shot(lang, img, h, up) if img else ""}</section>'
         for i, (h, ps, img) in enumerate(t["guide"])
+    )
+    para = lambda p: p if p.startswith(("<pre", "<table")) else f"<p>{p}</p>"  # noqa: E731
+    more = "".join(
+        f'<section class="gstep more" id="{k}"><div class="hd"><span class="num"></span><h2>{h}</h2></div>'
+        f'<div class="txt">{"".join(para(p) for p in ps)}</div></section>'
+        for k, h, ps in t["more"]
     )
     keys = "".join(f"<tr><td><kbd>{k}</kbd></td><td>{d}</td></tr>" for k, d in t["keys"])
     return f"""
@@ -141,6 +149,8 @@ def guide(lang, up):
     <h1>{t["gH"]}</h1>
     <p class="intro">{t["gIntro"]}</p>
     {steps}
+    <h1 class="moreh">{t["moreH"]}</h1>
+    {more}
     <section class="gstep" id="keys"><div class="hd"><span class="num"></span><h2>{t["keysH"]}</h2></div>
       <div class="txt"><table class="keys">{keys}</table></div></section>
   </div>
