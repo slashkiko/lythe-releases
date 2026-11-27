@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lythe</title>
+<meta name="description" content="Lythe is a Mac app for reviewing GitHub pull requests. It tells you which PR to read next and groups the diff by what changed. If you have Claude Code, Codex or GitHub Copilot CLI installed, it can have that CLI review the PR for you. Lythe has no AI of its own and needs no API key.">
+<link rel="canonical" href="https://slashkiko.github.io/lythe-releases/">
+<link rel="alternate" hreflang="en" href="https://slashkiko.github.io/lythe-releases/">
+<link rel="alternate" hreflang="ja" href="https://slashkiko.github.io/lythe-releases/ja/">
+<meta property="og:title" content="Lythe">
+<meta property="og:description" content="Lythe is a Mac app for reviewing GitHub pull requests. It tells you which PR to read next and groups the diff by what changed. If you have Claude Code, Codex or GitHub Copilot CLI installed, it can have that CLI review the PR for you. Lythe has no AI of its own and needs no API key.">
+<meta property="og:image" content="https://slashkiko.github.io/lythe-releases/shots/en/window.webp">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=LINE+Seed+JP:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="snav"><div class="wrap">
+  <a class="brand" href=""><svg viewBox="100 100 824 824" aria-hidden="true"><rect x="100" y="100" width="824" height="824" rx="185" fill="#12161c" stroke="#2a323b" stroke-width="12"/><g transform="translate(212 212) scale(9.375)"><g fill="#e4ebf0"><rect x="12" y="6.5" width="30" height="9" rx="4.5"/><rect x="12" y="20.5" width="30" height="9" rx="4.5"/><rect x="12" y="48.5" width="30" height="9" rx="4.5"/></g><rect x="12" y="34.5" width="44" height="9" rx="4.5" fill="#55c2c9"/></g></svg>Lythe</a>
+  <div class="navr">
+    <nav><a href="" class="on" aria-current="page">Home</a><a href="guide/">Guide</a><a href="https://github.com/slashkiko/lythe-releases/releases">Releases</a></nav>
+    <div class="lang"><a href="" hreflang="en" aria-current="true">EN</a><a href="ja/" hreflang="ja">日本語</a></div>
+  </div>
+</div></header>
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Review pull requests with the groundwork laid out.</h1>
+      <p class="lead">Lythe is a Mac app for reviewing GitHub pull requests. It tells you which PR to read next and groups the diff by what changed. If you have Claude Code, Codex or GitHub Copilot CLI installed, it can have that CLI review the PR for you. Lythe has no AI of its own and needs no API key.</p>
+      <p class="req">Apple Silicon Macs only (not Intel). Needs GitHub CLI, signed in.</p>
+    </div>
+    <div class="install">
+      <div class="hd"><span>Install with Terminal</span><span class="mono" style="font-size:12px">v0.1.0</span></div>
+      <div class="cmd"><code>curl -fsSL https://slashkiko.github.io/lythe-releases/install.sh | sh</code><button class="copy" type="button" data-copied="Copied">Copy</button></div>
+      <div class="alt">Or <a href="https://github.com/slashkiko/lythe-releases/releases/latest">download the .dmg</a>. The .dmg needs one extra command, shown in <a href="#install">Install</a>.</div>
+    </div>
+  </div>
+  <div class="shot hero-shot"><img src="shots/en/window.webp" alt="Lythe" width="1600" height="960"></div>
+</div>
+<section class="wrap feat" id="try">
+  <h2>Try it here</h2>
+  <p class="sub">This is the real Lythe UI running on made-up sample pull requests. Pick a feature, then click around. AI answers here are prepared in advance.</p>
+  <div class="try" data-lang="en" data-up="" data-narrow="Screenshot shown. Open this page on a wider screen to try the live demo." data-fail="The live demo did not start here, so this is a screenshot.">
+    <div class="scenes" role="tablist"><button type="button" role="tab" id="sc-list" data-scene="list" aria-controls="try-panel" aria-selected="true">What to read next</button><button type="button" role="tab" id="sc-graph" data-scene="graph" aria-controls="try-panel" aria-selected="false" tabindex="-1">Stacks as a graph</button><button type="button" role="tab" id="sc-semantic" data-scene="semantic" aria-controls="try-panel" aria-selected="false" tabindex="-1">Semantic diff</button><button type="button" role="tab" id="sc-reorder" data-scene="reorder" aria-controls="try-panel" aria-selected="false" tabindex="-1">Reorder with AI</button><button type="button" role="tab" id="sc-auto" data-scene="auto" aria-controls="try-panel" aria-selected="false" tabindex="-1">Auto review</button><button type="button" role="tab" id="sc-chat" data-scene="chat" aria-controls="try-panel" aria-selected="false" tabindex="-1">A second opinion</button></div>
+    <div id="try-panel" role="tabpanel"><div class="tryp" data-panel="list"><div class="say"><h3>What to read next</h3><p>PRs you wrote, are assigned, or are asked to review, from every repository, in one list ordered by who needs to act.</p></div><div class="do"><span class="lab">Try this</span><ol><li><span>Open the <b>All</b> tab. PRs are grouped into <b>Read</b> (your review is wanted), <b>Act</b> (your move), <b>Wait</b> (on someone else) and <b>Watch</b> (nothing needed).</span></li><li><span>Click a PR to open it on the right.</span></li><li><span>Switch to <b>Review requests</b> to see only the PRs you were asked to review.</span></li></ol></div></div><div class="tryp" data-panel="graph" hidden><div class="say"><h3>Stacks as a graph</h3><p>PRs opened on top of other PRs' branches (a stack) show as one graph, so you can see what sits under the one you are about to read.</p></div><div class="do"><span class="lab">Try this</span><ol><li><span>Click <b>#102</b>. Its stack lights up and the other PRs fade.</span></li><li><span>Untick <b>Related only</b> to bring the others back.</span></li><li><span>Hover a PR to see why it got its priority.</span></li></ol></div></div><div class="tryp" data-panel="semantic" hidden><div class="say"><h3>Semantic diff</h3><p>The diff grouped by function and type. Moved code shows as a move, with only the lines that really changed. It parses the code instead of using AI. Covers TypeScript, Rust, Go, CSS and config files (JSON, YAML, TOML); other files stay a normal diff.</p></div><div class="do"><span class="lab">Try this</span><ol><li><span>On the right, find <b>withRetry</b>: it moved to another file, and only the 2 lines that differ are colored.</span></li><li><span>Click <b>Orders</b> on the left to jump to that group.</span></li><li><span>Switch to <b>Diff</b> above to compare with the plain diff.</span></li></ol></div></div><div class="tryp" data-panel="reorder" hidden><div class="say"><h3>Reorder with AI</h3><p>An AI CLI splits a large PR into chunks by behavior, and Lythe shows the diff in that order with a short note on each chunk.</p></div><div class="do"><span class="lab">Try this</span><ol><li><span>Press <b>Reorder with AI</b>. The files are split into chunks in reading order.</span></li><li><span>Click <b>ⓘ</b> next to a chunk to read what it changes and why.</span></li><li><span>Press <b>Undo</b> to see the order before.</span></li></ol><p class="donote">Here a prepared answer comes back. In the app, the AI CLI you installed does the work.</p></div></div><div class="tryp" data-panel="auto" hidden><div class="say"><h3>Auto review</h3><p>Turn it on in Settings, and while Lythe is open your AI CLI reviews the PRs you're asked to review, highest priority first, and again after each push. Results stay inside Lythe. Nothing is posted to GitHub.</p></div><div class="do"><span class="lab">Try this</span><ol><li><span>The <b>Auto review</b> tab holds the result: a verdict and its reasons.</span></li><li><span>Scroll down for the full review.</span></li><li><span>Nothing was posted to GitHub. You decide what to send.</span></li></ol><p class="donote">This review was written in advance. In the app, your AI CLI writes it.</p></div></div><div class="tryp" data-panel="chat" hidden><div class="say"><h3>A second opinion</h3><p>Ask one AI CLI, then hand its answer to another to check. Each conversation has its own tab on the same PR.</p></div><div class="do"><span class="lab">Try this</span><ol><li><span>The tabs at the top are separate conversations, each with its own AI CLI.</span></li><li><span>The third tab is open: Codex checks an answer Claude Code gave in the second tab.</span></li><li><span>Type a question and press <b>⌘Enter</b>.</span></li></ol><p class="donote">Here a prepared answer comes back. In the app, the CLI you picked reads the PR and answers.</p></div></div></div>
+    <div class="demo">
+      <div class="demo-bar"><span class="demo-note">Sample data. Nothing connects to GitHub.</span><a href="demo/en/" target="_blank" rel="noopener">Open in a new tab ↗</a></div>
+      <div class="demo-view"><img class="demo-still" src="shots/en/list.webp" alt=""></div>
+    </div>
+  </div>
+</section>
+<section class="wrap gs" id="install">
+  <h2>Install</h2>
+  <p class="sub">About five minutes.</p>
+  <ol class="steps"><li class="step"><span class="n">1</span><div><h3>Install Lythe</h3><p>Paste this into Terminal. It puts Lythe.app in /Applications.</p><div class="term"><div class="cmd"><code>curl -fsSL https://slashkiko.github.io/lythe-releases/install.sh | sh</code><button class="copy" type="button" data-copied="Copied">Copy</button></div></div><p style="margin-top:10px">Installed from the .dmg instead? Lythe is not signed by Apple, so run this once before the first launch:</p><div class="term"><div class="cmd"><code>xattr -dr com.apple.quarantine /Applications/Lythe.app</code><button class="copy" type="button" data-copied="Copied">Copy</button></div></div></div></li><li class="step"><span class="n">2</span><div><h3>Sign in to GitHub CLI</h3><p>Lythe works with GitHub through your gh login (reading PRs and sending the reviews you submit) and asks gh for the token each time. It never saves the token.</p><div class="term"><div class="cmd"><code>brew install gh</code><button class="copy" type="button" data-copied="Copied">Copy</button></div></div><p style="margin-top:10px">No Homebrew? See cli.github.com for other installers.</p><div class="term"><div class="cmd"><code>gh auth login</code><button class="copy" type="button" data-copied="Copied">Copy</button></div></div></div></li><li class="step"><span class="n">3</span><div><h3>Open Lythe</h3><p>PRs you wrote, are assigned, or are asked to review show up, from every repository. To add more repositories or searches, open Settings (⌘ ,) › Repositories and searches.</p></div></li><li class="step"><span class="n">4</span><div><h3>Add an AI CLI (optional)</h3><p>Chat, Reorder with AI and Auto review (off until you turn it on) use a CLI on your Mac: Claude Code, Codex or GitHub Copilot CLI. Install one and sign in. Lythe runs it with its own settings and account, so its usage counts toward that plan. There is no API key to enter in Lythe.</p></div></li></ol>
+  <p style="margin-top:4px;color:var(--fg-2);font-size:14px">Lythe does not update itself. To update, choose <b>Lythe › Check for Updates…</b> in the menu bar.</p>
+  <details class="trouble"><summary>If something goes wrong</summary><dl><dt>“Lythe” is damaged and can’t be opened</dt><dd>macOS blocks apps that Apple has not signed. Run <code>xattr -dr com.apple.quarantine /Applications/Lythe.app</code> and open it again.</dd><dt>The gh command was not found</dt><dd>Install GitHub CLI with <code>brew install gh</code>, run <code>gh auth login</code>, then reopen Lythe.</dd><dt>The list is empty</dt><dd>No open PR matches yet. Add repositories in Settings › Repositories and searches.</dd></dl></details>
+  <p style="margin-top:28px">Installed? The <a href="guide/">Guide</a> walks through your first review.</p>
+</section></main>
+<footer class="sfoot"><div class="wrap"><span>Lythe 0.1.0</span><a href="https://github.com/slashkiko/lythe-releases/releases">Release notes</a><a href="https://github.com/slashkiko/lythe-releases/issues">Report a problem</a></div></footer>
+<script src="site.js" defer></script>
+</body>
+</html>

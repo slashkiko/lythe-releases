@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>最初のレビュー · Lythe</title>
+<meta name="description" content="PR を選んでから、レビューを送るまでの流れです。手順はそれぞれ独立しているので、要らないものは飛ばせます。">
+<link rel="canonical" href="https://slashkiko.github.io/lythe-releases/ja/guide/">
+<link rel="alternate" hreflang="en" href="https://slashkiko.github.io/lythe-releases/guide/">
+<link rel="alternate" hreflang="ja" href="https://slashkiko.github.io/lythe-releases/ja/guide/">
+<meta property="og:title" content="最初のレビュー · Lythe">
+<meta property="og:description" content="PR を選んでから、レビューを送るまでの流れです。手順はそれぞれ独立しているので、要らないものは飛ばせます。">
+<meta property="og:image" content="https://slashkiko.github.io/lythe-releases/shots/ja/window.webp">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=LINE+Seed+JP:wght@400;700&display=swap">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="snav"><div class="wrap">
+  <a class="brand" href="../../ja/"><svg viewBox="100 100 824 824" aria-hidden="true"><rect x="100" y="100" width="824" height="824" rx="185" fill="#12161c" stroke="#2a323b" stroke-width="12"/><g transform="translate(212 212) scale(9.375)"><g fill="#e4ebf0"><rect x="12" y="6.5" width="30" height="9" rx="4.5"/><rect x="12" y="20.5" width="30" height="9" rx="4.5"/><rect x="12" y="48.5" width="30" height="9" rx="4.5"/></g><rect x="12" y="34.5" width="44" height="9" rx="4.5" fill="#55c2c9"/></g></svg>Lythe</a>
+  <div class="navr">
+    <nav><a href="../../ja/">ホーム</a><a href="../../ja/guide/" class="on" aria-current="page">使い方</a><a href="https://github.com/slashkiko/lythe-releases/releases">リリース</a></nav>
+    <div class="lang"><a href="../../guide/" hreflang="en">EN</a><a href="../../ja/guide/" hreflang="ja" aria-current="true">日本語</a></div>
+  </div>
+</div></header>
+<main>
+<div class="wrap guide">
+  <nav class="side"><span class="lab">手順</span><a href="#g1">1. PR を選ぶ</a><a href="#g2">2. スタックの中の位置を見る</a><a href="#g3">3. 差分を読む</a><a href="#g4">4. AI に聞く</a><a href="#g5">5. コメントしてレビューを送る</a><a href="#g6">6. 裏でレビューさせる</a><a href="#g7">7. 自分の観点を覚えさせる</a><a href="#keys">覚えておくと速いキー</a></nav>
+  <div>
+    <h1>最初のレビュー</h1>
+    <p class="intro">PR を選んでから、レビューを送るまでの流れです。手順はそれぞれ独立しているので、要らないものは飛ばせます。</p>
+    <section class="gstep" id="g1"><div class="hd"><span class="num">1</span><h2>PR を選ぶ</h2></div><div class="txt"><p>左の一覧には <b>レビュー依頼</b>・<b>自分の PR</b>・<b>全部</b> の3つのタブがあります。</p><p>優先度で並べると <b>読む</b>（自分のレビュー待ち）・<b>動く</b>（自分が動かす番）・<b>待つ</b>（ほかの人待ち）・<b>静観</b>（今は何もしなくてよい）に分かれます。上から開きます。</p></div><div class="shot"><img src="../../shots/ja/list.webp" alt="PR を選ぶ" loading="lazy" data-fit></div></section><section class="gstep" id="g2"><div class="hd"><span class="num">2</span><h2>スタックの中の位置を見る</h2></div><div class="txt"><p><b>⌘G</b> でグラフを開きます。PR の積み重なりごとに枠で囲みます。PR にポインタを重ねると、その優先度になった理由が出ます。</p><p>PR を押すとその系列が光り、<b>#n を開く</b> で読み始めます。</p></div><div class="shot"><img src="../../shots/ja/graph.webp" alt="スタックの中の位置を見る" loading="lazy" data-fit></div></section><section class="gstep" id="g3"><div class="hd"><span class="num">3</span><h2>差分を読む</h2></div><div class="txt"><p>読み終えたファイルには <b>Viewed</b> を付けます。作者があとでそのファイルを変えると、Lythe が印を外して知らせます。</p><p>大きな PR では <b>Semantic diff</b> に切り替えて関数や型ごとに読むか、<b>AI で並べ替え</b> を押して AI CLI が勧める順で読みます。 Semantic diff は AI を使わず、TypeScript・Rust・Go・CSS と設定ファイルを構文で解析します。</p></div><div class="shot"><img src="../../shots/ja/semantic.webp" alt="差分を読む" loading="lazy" data-fit></div></section><section class="gstep" id="g4"><div class="hd"><span class="num">4</span><h2>AI に聞く</h2></div><div class="txt"><p>右の Chat は、PR・差分・自分のコメントを選んだ CLI に渡します。<b>レビューする</b> や <b>壊れる所を探す</b> などの定型文から始められます。 CLI は自分のアカウントでその AI サービスへ送ります。</p><p>別の意見がほしいときは、別の CLI でタブを開き、最初の答えを渡します。</p></div><div class="shot"><img src="../../shots/ja/chat.webp" alt="AI に聞く" loading="lazy" data-fit></div></section><section class="gstep" id="g5"><div class="hd"><span class="num">5</span><h2>コメントしてレビューを送る</h2></div><div class="txt"><p>行の頭の印を押すとコメントを書けます。送るまでは下書きのまま残ります。</p><p><b>レビューを送信</b> で GitHub にまとめて送ります。承認（Approve）とマージも同じ画面からできます。</p></div></section><section class="gstep" id="g6"><div class="hd"><span class="num">6</span><h2>裏でレビューさせる</h2></div><div class="txt"><p>設定の「エージェントとプロンプト」で <b>自動レビュー</b> をオンにします。Lythe を開いている間、レビューを頼まれた PR を優先度の順にレビューします。 1つの PR で CLI を何度も起動するので、利用枠を使います。</p><p>結果は Chat の <b>自動レビュー</b> タブに判定つきで出ます。自分で送るまで GitHub には何も投稿しません。</p></div><div class="shot"><img src="../../shots/ja/auto.webp" alt="裏でレビューさせる" loading="lazy" data-fit></div></section><section class="gstep" id="g7"><div class="hd"><span class="num">7</span><h2>自分の観点を覚えさせる</h2></div><div class="txt"><p>Lythe はレビューのコメントと Chat での指示をこの Mac に溜めます。50 件溜まったら、設定の「観点」で <b>観点を作り直す</b> を押すと、AI CLI が観点にまとめます。</p><p>切っていない観点は Chat の問い合わせに毎回添えられるので、自分がいつも見るところを AI も見るようになります。</p></div></section>
+    <section class="gstep" id="keys"><div class="hd"><span class="num"></span><h2>覚えておくと速いキー</h2></div>
+      <div class="txt"><table class="keys"><tr><td><kbd>⌘P</kbd></td><td>PR・ファイルへ移る</td></tr><tr><td><kbd>⌘⇧P</kbd></td><td>操作を探す</td></tr><tr><td><kbd>⌘G</kbd></td><td>グラフの開閉</td></tr><tr><td><kbd>⌘F</kbd></td><td>最後に押したペインの中を検索</td></tr><tr><td><kbd>⌃Tab</kbd></td><td>PR を切り替える</td></tr><tr><td><kbd>⌥Tab</kbd></td><td>Chat のタブを切り替える</td></tr><tr><td><kbd>⌘ ,</kbd></td><td>設定</td></tr></table></div></section>
+  </div>
+</div></main>
+<footer class="sfoot"><div class="wrap"><span>Lythe 0.1.0</span><a href="https://github.com/slashkiko/lythe-releases/releases">リリースノート</a><a href="https://github.com/slashkiko/lythe-releases/issues">問題を報告</a></div></footer>
+<script src="../../site.js" defer></script>
+</body>
+</html>

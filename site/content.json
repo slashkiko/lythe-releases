@@ -1,0 +1,482 @@
+{
+ "en": {
+  "navHome": "Home",
+  "navGuide": "Guide",
+  "navReleases": "Releases",
+  "copy": "Copy",
+  "copied": "Copied",
+  "h1": "Review pull requests with the groundwork laid out.",
+  "lead": "Lythe is a Mac app for reviewing GitHub pull requests. It tells you which PR to read next and groups the diff by what changed. If you have Claude Code, Codex or GitHub Copilot CLI installed, it can have that CLI review the PR for you. Lythe has no AI of its own and needs no API key.",
+  "req": "Apple Silicon Macs only (not Intel). Needs GitHub CLI, signed in.",
+  "installHd": "Install with Terminal",
+  "installAlt": "Or <a href=\"https://github.com/slashkiko/lythe-releases/releases/latest\">download the .dmg</a>. The .dmg needs one extra command, shown in <a href=\"#install\">Install</a>.",
+  "featH": "Try it here",
+  "featSub": "This is the real Lythe UI running on made-up sample pull requests. Pick a feature, then click around. AI answers here are prepared in advance.",
+  "gsH": "Install",
+  "gsSub": "About five minutes.",
+  "update": "Lythe does not update itself. To update, choose <b>Lythe › Check for Updates…</b> in the menu bar.",
+  "toGuide": "Installed? The <a href=\"{guide}\">Guide</a> walks through your first review.",
+  "notes": "Release notes",
+  "issue": "Report a problem",
+  "feats": [
+   [
+    "What to read next",
+    "PRs you wrote, are assigned, or are asked to review, from every repository, in one list ordered by who needs to act.",
+    "list"
+   ],
+   [
+    "Stacks as a graph",
+    "PRs opened on top of other PRs' branches (a stack) show as one graph, so you can see what sits under the one you are about to read.",
+    "graph"
+   ],
+   [
+    "Semantic diff",
+    "The diff grouped by function and type. Moved code shows as a move, with only the lines that really changed. It parses the code instead of using AI. Covers TypeScript, Rust, Go, CSS and config files (JSON, YAML, TOML); other files stay a normal diff.",
+    "semantic"
+   ],
+   [
+    "Reorder with AI",
+    "An AI CLI splits a large PR into chunks by behavior, and Lythe shows the diff in that order with a short note on each chunk.",
+    "reorder"
+   ],
+   [
+    "Auto review",
+    "Turn it on in Settings, and while Lythe is open your AI CLI reviews the PRs you're asked to review, highest priority first, and again after each push. Results stay inside Lythe. Nothing is posted to GitHub.",
+    "auto"
+   ],
+   [
+    "A second opinion",
+    "Ask one AI CLI, then hand its answer to another to check. Each conversation has its own tab on the same PR.",
+    "chat"
+   ]
+  ],
+  "steps": [
+   [
+    "Install Lythe",
+    "Paste this into Terminal. It puts Lythe.app in /Applications.",
+    "curl -fsSL https://slashkiko.github.io/lythe-releases/install.sh | sh",
+    "Installed from the .dmg instead? Lythe is not signed by Apple, so run this once before the first launch:",
+    "xattr -dr com.apple.quarantine /Applications/Lythe.app"
+   ],
+   [
+    "Sign in to GitHub CLI",
+    "Lythe works with GitHub through your gh login (reading PRs and sending the reviews you submit) and asks gh for the token each time. It never saves the token.",
+    "brew install gh",
+    "No Homebrew? See cli.github.com for other installers.",
+    "gh auth login"
+   ],
+   [
+    "Open Lythe",
+    "PRs you wrote, are assigned, or are asked to review show up, from every repository. To add more repositories or searches, open Settings (⌘ ,) › Repositories and searches."
+   ],
+   [
+    "Add an AI CLI (optional)",
+    "Chat, Reorder with AI and Auto review (off until you turn it on) use a CLI on your Mac: Claude Code, Codex or GitHub Copilot CLI. Install one and sign in. Lythe runs it with its own settings and account, so its usage counts toward that plan. There is no API key to enter in Lythe."
+   ]
+  ],
+  "trouble": [
+   "If something goes wrong",
+   [
+    [
+     "“Lythe” is damaged and can’t be opened",
+     "macOS blocks apps that Apple has not signed. Run <code>xattr -dr com.apple.quarantine /Applications/Lythe.app</code> and open it again."
+    ],
+    [
+     "The gh command was not found",
+     "Install GitHub CLI with <code>brew install gh</code>, run <code>gh auth login</code>, then reopen Lythe."
+    ],
+    [
+     "The list is empty",
+     "No open PR matches yet. Add repositories in Settings › Repositories and searches."
+    ]
+   ]
+  ],
+  "gH": "Your first review",
+  "gIntro": "From picking a PR to sending the review. Each step stands on its own, so skip what you don't need.",
+  "gLabel": "Steps",
+  "keysH": "Keys worth knowing",
+  "guide": [
+   [
+    "Pick a PR",
+    [
+     "The list on the left has three tabs: <b>Review requests</b>, <b>My PRs</b> and <b>All</b>.",
+     "Sort by priority and the list splits into <b>Read</b> (your review is wanted), <b>Act</b> (your move), <b>Wait</b> (on someone else) and <b>Watch</b> (nothing needed). Start at the top."
+    ],
+    "list"
+   ],
+   [
+    "See where it sits in the stack",
+    [
+     "Press <b>⌘G</b> to open the graph. Each stack of PRs is boxed. Hover a PR to see why it got its priority.",
+     "Click a PR to light up its chain, then <b>Open #n</b> to read it."
+    ],
+    "graph"
+   ],
+   [
+    "Read the diff",
+    [
+     "Tick <b>Viewed</b> on each file as you finish it. If the author changes that file later, Lythe clears the mark and tells you.",
+     "For a large PR, switch to <b>Semantic diff</b> to read by function and type, or press <b>Reorder with AI</b> to read in the order an AI CLI suggests. Semantic diff parses TypeScript, Rust, Go, CSS and config files without AI."
+    ],
+    "semantic"
+   ],
+   [
+    "Ask an AI",
+    [
+     "The Chat pane on the right sends the PR, the diff and your comments to the CLI you pick. Start from a template such as <b>Review it</b> or <b>Find what breaks</b>. The CLI sends it to its AI service under your account.",
+     "Want a second opinion? Open another tab with a different CLI and hand it the first answer."
+    ],
+    "chat"
+   ],
+   [
+    "Comment and submit",
+    [
+     "Click the mark at the start of a line to write a comment. Comments stay as drafts until you send them.",
+     "<b>Submit review</b> sends them to GitHub in one go. Approve and merge from the same screen."
+    ],
+    null
+   ],
+   [
+    "Let it review in the background",
+    [
+     "Turn on <b>Auto review</b> in Settings › Agents and prompts. While Lythe is open, PRs you are asked to review get reviewed in priority order. Each PR runs the CLI many times and uses your quota.",
+     "Results appear in the <b>Auto review</b> tab of Chat with a verdict. Nothing is posted to GitHub until you send it."
+    ],
+    "auto"
+   ],
+   [
+    "Teach it what you look for",
+    [
+     "Lythe keeps your review comments and Chat instructions on this Mac. Once there are 50, press <b>Distil again</b> in Settings › Angles and your AI CLI distils them into angles.",
+     "Angles you have not switched off go with every Chat question, so the AI checks what you usually check."
+    ],
+    null
+   ]
+  ],
+  "keys": [
+   [
+    "⌘P",
+    "Go to a PR or file"
+   ],
+   [
+    "⌘⇧P",
+    "Find an action"
+   ],
+   [
+    "⌘G",
+    "Open or close the graph"
+   ],
+   [
+    "⌘F",
+    "Search inside the pane you last clicked"
+   ],
+   [
+    "⌃Tab",
+    "Switch PRs"
+   ],
+   [
+    "⌥Tab",
+    "Switch Chat tabs"
+   ],
+   [
+    "⌘ ,",
+    "Settings"
+   ]
+  ],
+  "demoNote": "Sample data. Nothing connects to GitHub.",
+  "demoOpen": "Open in a new tab",
+  "demoNarrow": "Screenshot shown. Open this page on a wider screen to try the live demo.",
+  "demoFail": "The live demo did not start here, so this is a screenshot.",
+  "tryH": "Try this",
+  "tries": {
+   "list": [
+    [
+     "Open the <b>All</b> tab. PRs are grouped into <b>Read</b> (your review is wanted), <b>Act</b> (your move), <b>Wait</b> (on someone else) and <b>Watch</b> (nothing needed).",
+     "Click a PR to open it on the right.",
+     "Switch to <b>Review requests</b> to see only the PRs you were asked to review."
+    ],
+    null
+   ],
+   "graph": [
+    [
+     "Click <b>#102</b>. Its stack lights up and the other PRs fade.",
+     "Untick <b>Related only</b> to bring the others back.",
+     "Hover a PR to see why it got its priority."
+    ],
+    null
+   ],
+   "semantic": [
+    [
+     "On the right, find <b>withRetry</b>: it moved to another file, and only the 2 lines that differ are colored.",
+     "Click <b>Orders</b> on the left to jump to that group.",
+     "Switch to <b>Diff</b> above to compare with the plain diff."
+    ],
+    null
+   ],
+   "reorder": [
+    [
+     "Press <b>Reorder with AI</b>. The files are split into chunks in reading order.",
+     "Click <b>ⓘ</b> next to a chunk to read what it changes and why.",
+     "Press <b>Undo</b> to see the order before."
+    ],
+    "Here a prepared answer comes back. In the app, the AI CLI you installed does the work."
+   ],
+   "auto": [
+    [
+     "The <b>Auto review</b> tab holds the result: a verdict and its reasons.",
+     "Scroll down for the full review.",
+     "Nothing was posted to GitHub. You decide what to send."
+    ],
+    "This review was written in advance. In the app, your AI CLI writes it."
+   ],
+   "chat": [
+    [
+     "The tabs at the top are separate conversations, each with its own AI CLI.",
+     "The third tab is open: Codex checks an answer Claude Code gave in the second tab.",
+     "Type a question and press <b>⌘Enter</b>."
+    ],
+    "Here a prepared answer comes back. In the app, the CLI you picked reads the PR and answers."
+   ]
+  }
+ },
+ "ja": {
+  "navHome": "ホーム",
+  "navGuide": "使い方",
+  "navReleases": "リリース",
+  "copy": "コピー",
+  "copied": "コピーしました",
+  "h1": "PR のレビューを、下ごしらえから手伝う。",
+  "lead": "Lythe は GitHub の PR をレビューする Mac アプリです。次に読む PR を示し、差分を変わったものごとにまとめます。Mac に Claude Code・Codex・GitHub Copilot CLI のどれかが入っていれば、それに PR をレビューさせることもできます。Lythe 自体は AI を持たず、API キーも要りません。",
+  "req": "Apple Silicon の Mac 専用（Intel Mac では動きません）。ログイン済みの GitHub CLI が要ります。",
+  "installHd": "ターミナルで入れる",
+  "installAlt": "<a href=\"https://github.com/slashkiko/lythe-releases/releases/latest\">.dmg をダウンロード</a>することもできます。その場合は<a href=\"#install\">入れ方</a>のコマンドを1つ足します。",
+  "featH": "ここで触ってみる",
+  "featSub": "下の画面は、作り物のサンプル PR で動いている本物の Lythe の画面です。機能を選んで、そのまま押してみてください。AI の答えは、ここではあらかじめ用意したものです。",
+  "gsH": "入れ方",
+  "gsSub": "5分ほどです。",
+  "update": "Lythe は自動では更新しません。更新するときは、メニューバーの <b>Lythe › Check for Updates…</b> を選びます。",
+  "toGuide": "入れたら、<a href=\"{guide}\">使い方</a>で最初のレビューまでを順に見られます。",
+  "notes": "リリースノート",
+  "issue": "問題を報告",
+  "feats": [
+   [
+    "次に読む PR",
+    "自分が関わる PR を、リポジトリをまたいで1つの一覧にし、優先度の順に並べます。どれから開くかが分かります。",
+    "list"
+   ],
+   [
+    "スタックをグラフで",
+    "ほかの PR のブランチを base にした PR（積み重なった PR）を1枚のグラフにします。これから読む PR の下に何があるかが見えます。",
+    "graph"
+   ],
+   [
+    "Semantic diff",
+    "差分を関数や型ごとにまとめます。移しただけのコードは移動として出し、本当に変わった行だけを示します。AI ではなく構文の解析で行います。対象は TypeScript・Rust・Go・CSS と設定ファイル（JSON・YAML・TOML）で、それ以外はふつうの差分のままです。",
+    "semantic"
+   ],
+   [
+    "AI で並べ替え",
+    "大きな PR を AI CLI が振る舞いごとに切り分け、その順で差分を出します。まとまりごとに短い説明が付きます。",
+    "reorder"
+   ],
+   [
+    "自動レビュー",
+    "設定でオンにすると、Lythe を開いている間、レビューを頼まれた PR を手元の AI CLI が優先度の順にレビューします。push されるとやり直します。結果は Lythe の中にだけ残り、GitHub には投稿しません。",
+    "auto"
+   ],
+   [
+    "別の AI に確かめさせる",
+    "1つの AI CLI に聞いた答えを、別の AI CLI に渡して確かめさせます。会話は同じ PR の中で別々のタブになります。",
+    "chat"
+   ]
+  ],
+  "steps": [
+   [
+    "Lythe を入れる",
+    "ターミナルに貼り付けて実行します。/Applications に Lythe.app が入ります。",
+    "curl -fsSL https://slashkiko.github.io/lythe-releases/install.sh | sh",
+    ".dmg から入れた場合は、Apple の署名が無いため、初めて開く前に1回だけ次を実行します。",
+    "xattr -dr com.apple.quarantine /Applications/Lythe.app"
+   ],
+   [
+    "GitHub CLI にログインする",
+    "Lythe は gh のログインで GitHub とやり取りします（PR を読む、送ると決めたレビューを送る）。トークンは毎回 gh から受け取り、保存しません。",
+    "brew install gh",
+    "Homebrew が無いときは cli.github.com にほかの入れ方があります。",
+    "gh auth login"
+   ],
+   [
+    "Lythe を開く",
+    "自分が書いた PR、担当になった PR、レビューを頼まれた PR が、リポジトリを問わず並びます。ほかのリポジトリや条件を足すときは、設定（⌘ ,）の「対象と検索条件」を開きます。"
+   ],
+   [
+    "AI CLI を入れる（任意）",
+    "Chat・AI で並べ替え・自動レビュー（オンにするまで動きません）は、Mac に入っている Claude Code・Codex・GitHub Copilot CLI のどれかを使います。1つを入れてログインしておきます。Lythe は各 CLI の設定とアカウントのまま動かすので、使った分はその CLI の契約に数えられます。Lythe に API キーは入れません。"
+   ]
+  ],
+  "trouble": [
+   "うまくいかないとき",
+   [
+    [
+     "「“Lythe”は壊れているため開けません」と出る",
+     "Apple の署名が無いアプリを macOS が止めています。<code>xattr -dr com.apple.quarantine /Applications/Lythe.app</code> を実行してから開き直します。"
+    ],
+    [
+     "gh コマンドが見つからないと出る",
+     "<code>brew install gh</code> で GitHub CLI を入れ、<code>gh auth login</code> を実行してから Lythe を開き直します。"
+    ],
+    [
+     "一覧が空",
+     "条件に当てはまる、開いている（open の）PR がまだありません。設定の「対象と検索条件」にリポジトリを足します。"
+    ]
+   ]
+  ],
+  "gH": "最初のレビュー",
+  "gIntro": "PR を選んでから、レビューを送るまでの流れです。手順はそれぞれ独立しているので、要らないものは飛ばせます。",
+  "gLabel": "手順",
+  "keysH": "覚えておくと速いキー",
+  "guide": [
+   [
+    "PR を選ぶ",
+    [
+     "左の一覧には <b>レビュー依頼</b>・<b>自分の PR</b>・<b>全部</b> の3つのタブがあります。",
+     "優先度で並べると <b>読む</b>（自分のレビュー待ち）・<b>動く</b>（自分が動かす番）・<b>待つ</b>（ほかの人待ち）・<b>静観</b>（今は何もしなくてよい）に分かれます。上から開きます。"
+    ],
+    "list"
+   ],
+   [
+    "スタックの中の位置を見る",
+    [
+     "<b>⌘G</b> でグラフを開きます。PR の積み重なりごとに枠で囲みます。PR にポインタを重ねると、その優先度になった理由が出ます。",
+     "PR を押すとその系列が光り、<b>#n を開く</b> で読み始めます。"
+    ],
+    "graph"
+   ],
+   [
+    "差分を読む",
+    [
+     "読み終えたファイルには <b>Viewed</b> を付けます。作者があとでそのファイルを変えると、Lythe が印を外して知らせます。",
+     "大きな PR では <b>Semantic diff</b> に切り替えて関数や型ごとに読むか、<b>AI で並べ替え</b> を押して AI CLI が勧める順で読みます。 Semantic diff は AI を使わず、TypeScript・Rust・Go・CSS と設定ファイルを構文で解析します。"
+    ],
+    "semantic"
+   ],
+   [
+    "AI に聞く",
+    [
+     "右の Chat は、PR・差分・自分のコメントを選んだ CLI に渡します。<b>レビューする</b> や <b>壊れる所を探す</b> などの定型文から始められます。 CLI は自分のアカウントでその AI サービスへ送ります。",
+     "別の意見がほしいときは、別の CLI でタブを開き、最初の答えを渡します。"
+    ],
+    "chat"
+   ],
+   [
+    "コメントしてレビューを送る",
+    [
+     "行の頭の印を押すとコメントを書けます。送るまでは下書きのまま残ります。",
+     "<b>レビューを送信</b> で GitHub にまとめて送ります。承認（Approve）とマージも同じ画面からできます。"
+    ],
+    null
+   ],
+   [
+    "裏でレビューさせる",
+    [
+     "設定の「エージェントとプロンプト」で <b>自動レビュー</b> をオンにします。Lythe を開いている間、レビューを頼まれた PR を優先度の順にレビューします。 1つの PR で CLI を何度も起動するので、利用枠を使います。",
+     "結果は Chat の <b>自動レビュー</b> タブに判定つきで出ます。自分で送るまで GitHub には何も投稿しません。"
+    ],
+    "auto"
+   ],
+   [
+    "自分の観点を覚えさせる",
+    [
+     "Lythe はレビューのコメントと Chat での指示をこの Mac に溜めます。50 件溜まったら、設定の「観点」で <b>観点を作り直す</b> を押すと、AI CLI が観点にまとめます。",
+     "切っていない観点は Chat の問い合わせに毎回添えられるので、自分がいつも見るところを AI も見るようになります。"
+    ],
+    null
+   ]
+  ],
+  "keys": [
+   [
+    "⌘P",
+    "PR・ファイルへ移る"
+   ],
+   [
+    "⌘⇧P",
+    "操作を探す"
+   ],
+   [
+    "⌘G",
+    "グラフの開閉"
+   ],
+   [
+    "⌘F",
+    "最後に押したペインの中を検索"
+   ],
+   [
+    "⌃Tab",
+    "PR を切り替える"
+   ],
+   [
+    "⌥Tab",
+    "Chat のタブを切り替える"
+   ],
+   [
+    "⌘ ,",
+    "設定"
+   ]
+  ],
+  "demoNote": "サンプルのデータです。GitHub にはつながりません。",
+  "demoOpen": "別のタブで大きく開く",
+  "demoNarrow": "画面写真を出しています。広い画面で開くと、ここでデモを操作できます。",
+  "demoFail": "ここではデモを動かせなかったので、画面写真を出しています。",
+  "tryH": "やってみる",
+  "tries": {
+   "list": [
+    [
+     "<b>全部</b> タブを開きます。PR が <b>読む</b>（自分のレビュー待ち）・<b>動く</b>（自分が動かす番）・<b>待つ</b>（ほかの人待ち）・<b>静観</b>（今は何もしなくてよい）に分かれて並びます。",
+     "PR を押すと、右に中身が開きます。",
+     "<b>レビュー依頼</b> に替えると、頼まれた PR だけになります。"
+    ],
+    null
+   ],
+   "graph": [
+    [
+     "<b>#102</b> を押します。その積み重なりが光り、ほかの PR は薄くなります。",
+     "<b>関連 PR のみ</b> を外すと、ほかの PR が戻ります。",
+     "PR にポインタを重ねると、その優先度になった理由が出ます。"
+    ],
+    null
+   ],
+   "semantic": [
+    [
+     "右で <b>withRetry</b> を探します。別のファイルへ移ったうえで2行だけ変わっていて、その2行だけに色が付いています。",
+     "左の <b>Orders</b> を押すと、そのまとまりへ移ります。",
+     "上の <b>差分</b> に替えて、ふつうの差分と比べます。"
+    ],
+    null
+   ],
+   "reorder": [
+    [
+     "<b>AI で並べ替え</b> を押します。ファイルが、読む順のまとまりに分かれます。",
+     "まとまりの横の <b>ⓘ</b> を押すと、何をなぜ変えたかが出ます。",
+     "<b>元に戻す</b> で、並べ替える前と比べます。"
+    ],
+    "ここでは用意した答えが返ります。アプリでは、手元の AI CLI が分けます。"
+   ],
+   "auto": [
+    [
+     "<b>自動レビュー</b> タブに結果があります。判定と、その理由です。",
+     "下へ送ると、レビューの全文があります。",
+     "GitHub には何も投稿していません。送るかどうかは自分で決めます。"
+    ],
+    "このレビューは用意したものです。アプリでは、手元の AI CLI が書きます。"
+   ],
+   "chat": [
+    [
+     "上のタブは別々の会話で、それぞれ別の AI CLI につながっています。",
+     "いま開いているのは3つ目のタブです。2つ目で Claude Code が出した答えを、Codex が確かめています。",
+     "質問を打って <b>⌘Enter</b> で送ります。"
+    ],
+    "ここでは用意した答えが返ります。アプリでは、選んだ CLI が PR を読んで答えます。"
+   ]
+  }
+ }
+}

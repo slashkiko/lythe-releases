@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your first review · Lythe</title>
+<meta name="description" content="From picking a PR to sending the review. Each step stands on its own, so skip what you don&#x27;t need.">
+<link rel="canonical" href="https://slashkiko.github.io/lythe-releases/guide/">
+<link rel="alternate" hreflang="en" href="https://slashkiko.github.io/lythe-releases/guide/">
+<link rel="alternate" hreflang="ja" href="https://slashkiko.github.io/lythe-releases/ja/guide/">
+<meta property="og:title" content="Your first review · Lythe">
+<meta property="og:description" content="From picking a PR to sending the review. Each step stands on its own, so skip what you don&#x27;t need.">
+<meta property="og:image" content="https://slashkiko.github.io/lythe-releases/shots/en/window.webp">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=LINE+Seed+JP:wght@400;700&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="snav"><div class="wrap">
+  <a class="brand" href="../"><svg viewBox="100 100 824 824" aria-hidden="true"><rect x="100" y="100" width="824" height="824" rx="185" fill="#12161c" stroke="#2a323b" stroke-width="12"/><g transform="translate(212 212) scale(9.375)"><g fill="#e4ebf0"><rect x="12" y="6.5" width="30" height="9" rx="4.5"/><rect x="12" y="20.5" width="30" height="9" rx="4.5"/><rect x="12" y="48.5" width="30" height="9" rx="4.5"/></g><rect x="12" y="34.5" width="44" height="9" rx="4.5" fill="#55c2c9"/></g></svg>Lythe</a>
+  <div class="navr">
+    <nav><a href="../">Home</a><a href="../guide/" class="on" aria-current="page">Guide</a><a href="https://github.com/slashkiko/lythe-releases/releases">Releases</a></nav>
+    <div class="lang"><a href="../guide/" hreflang="en" aria-current="true">EN</a><a href="../ja/guide/" hreflang="ja">日本語</a></div>
+  </div>
+</div></header>
+<main>
+<div class="wrap guide">
+  <nav class="side"><span class="lab">Steps</span><a href="#g1">1. Pick a PR</a><a href="#g2">2. See where it sits in the stack</a><a href="#g3">3. Read the diff</a><a href="#g4">4. Ask an AI</a><a href="#g5">5. Comment and submit</a><a href="#g6">6. Let it review in the background</a><a href="#g7">7. Teach it what you look for</a><a href="#keys">Keys worth knowing</a></nav>
+  <div>
+    <h1>Your first review</h1>
+    <p class="intro">From picking a PR to sending the review. Each step stands on its own, so skip what you don't need.</p>
+    <section class="gstep" id="g1"><div class="hd"><span class="num">1</span><h2>Pick a PR</h2></div><div class="txt"><p>The list on the left has three tabs: <b>Review requests</b>, <b>My PRs</b> and <b>All</b>.</p><p>Sort by priority and the list splits into <b>Read</b> (your review is wanted), <b>Act</b> (your move), <b>Wait</b> (on someone else) and <b>Watch</b> (nothing needed). Start at the top.</p></div><div class="shot"><img src="../shots/en/list.webp" alt="Pick a PR" loading="lazy" data-fit></div></section><section class="gstep" id="g2"><div class="hd"><span class="num">2</span><h2>See where it sits in the stack</h2></div><div class="txt"><p>Press <b>⌘G</b> to open the graph. Each stack of PRs is boxed. Hover a PR to see why it got its priority.</p><p>Click a PR to light up its chain, then <b>Open #n</b> to read it.</p></div><div class="shot"><img src="../shots/en/graph.webp" alt="See where it sits in the stack" loading="lazy" data-fit></div></section><section class="gstep" id="g3"><div class="hd"><span class="num">3</span><h2>Read the diff</h2></div><div class="txt"><p>Tick <b>Viewed</b> on each file as you finish it. If the author changes that file later, Lythe clears the mark and tells you.</p><p>For a large PR, switch to <b>Semantic diff</b> to read by function and type, or press <b>Reorder with AI</b> to read in the order an AI CLI suggests. Semantic diff parses TypeScript, Rust, Go, CSS and config files without AI.</p></div><div class="shot"><img src="../shots/en/semantic.webp" alt="Read the diff" loading="lazy" data-fit></div></section><section class="gstep" id="g4"><div class="hd"><span class="num">4</span><h2>Ask an AI</h2></div><div class="txt"><p>The Chat pane on the right sends the PR, the diff and your comments to the CLI you pick. Start from a template such as <b>Review it</b> or <b>Find what breaks</b>. The CLI sends it to its AI service under your account.</p><p>Want a second opinion? Open another tab with a different CLI and hand it the first answer.</p></div><div class="shot"><img src="../shots/en/chat.webp" alt="Ask an AI" loading="lazy" data-fit></div></section><section class="gstep" id="g5"><div class="hd"><span class="num">5</span><h2>Comment and submit</h2></div><div class="txt"><p>Click the mark at the start of a line to write a comment. Comments stay as drafts until you send them.</p><p><b>Submit review</b> sends them to GitHub in one go. Approve and merge from the same screen.</p></div></section><section class="gstep" id="g6"><div class="hd"><span class="num">6</span><h2>Let it review in the background</h2></div><div class="txt"><p>Turn on <b>Auto review</b> in Settings › Agents and prompts. While Lythe is open, PRs you are asked to review get reviewed in priority order. Each PR runs the CLI many times and uses your quota.</p><p>Results appear in the <b>Auto review</b> tab of Chat with a verdict. Nothing is posted to GitHub until you send it.</p></div><div class="shot"><img src="../shots/en/auto.webp" alt="Let it review in the background" loading="lazy" data-fit></div></section><section class="gstep" id="g7"><div class="hd"><span class="num">7</span><h2>Teach it what you look for</h2></div><div class="txt"><p>Lythe keeps your review comments and Chat instructions on this Mac. Once there are 50, press <b>Distil again</b> in Settings › Angles and your AI CLI distils them into angles.</p><p>Angles you have not switched off go with every Chat question, so the AI checks what you usually check.</p></div></section>
+    <section class="gstep" id="keys"><div class="hd"><span class="num"></span><h2>Keys worth knowing</h2></div>
+      <div class="txt"><table class="keys"><tr><td><kbd>⌘P</kbd></td><td>Go to a PR or file</td></tr><tr><td><kbd>⌘⇧P</kbd></td><td>Find an action</td></tr><tr><td><kbd>⌘G</kbd></td><td>Open or close the graph</td></tr><tr><td><kbd>⌘F</kbd></td><td>Search inside the pane you last clicked</td></tr><tr><td><kbd>⌃Tab</kbd></td><td>Switch PRs</td></tr><tr><td><kbd>⌥Tab</kbd></td><td>Switch Chat tabs</td></tr><tr><td><kbd>⌘ ,</kbd></td><td>Settings</td></tr></table></div></section>
+  </div>
+</div></main>
+<footer class="sfoot"><div class="wrap"><span>Lythe 0.1.0</span><a href="https://github.com/slashkiko/lythe-releases/releases">Release notes</a><a href="https://github.com/slashkiko/lythe-releases/issues">Report a problem</a></div></footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lythe</title>
+<meta name="description" content="Lythe は GitHub の PR をレビューする Mac アプリです。次に読む PR を示し、差分を変わったものごとにまとめます。Mac に Claude Code・Codex・GitHub Copilot CLI のどれかが入っていれば、それに PR をレビューさせることもできます。Lythe 自体は AI を持たず、API キーも要りません。">
+<link rel="canonical" href="https://slashkiko.github.io/lythe-releases/ja/">
+<link rel="alternate" hreflang="en" href="https://slashkiko.github.io/lythe-releases/">
+<link rel="alternate" hreflang="ja" href="https://slashkiko.github.io/lythe-releases/ja/">
+<meta property="og:title" content="Lythe">
+<meta property="og:description" content="Lythe は GitHub の PR をレビューする Mac アプリです。次に読む PR を示し、差分を変わったものごとにまとめます。Mac に Claude Code・Codex・GitHub Copilot CLI のどれかが入っていれば、それに PR をレビューさせることもできます。Lythe 自体は AI を持たず、API キーも要りません。">
+<meta property="og:image" content="https://slashkiko.github.io/lythe-releases/shots/ja/window.webp">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=LINE+Seed+JP:wght@400;700&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="snav"><div class="wrap">
+  <a class="brand" href="../ja/"><svg viewBox="100 100 824 824" aria-hidden="true"><rect x="100" y="100" width="824" height="824" rx="185" fill="#12161c" stroke="#2a323b" stroke-width="12"/><g transform="translate(212 212) scale(9.375)"><g fill="#e4ebf0"><rect x="12" y="6.5" width="30" height="9" rx="4.5"/><rect x="12" y="20.5" width="30" height="9" rx="4.5"/><rect x="12" y="48.5" width="30" height="9" rx="4.5"/></g><rect x="12" y="34.5" width="44" height="9" rx="4.5" fill="#55c2c9"/></g></svg>Lythe</a>
+  <div class="navr">
+    <nav><a href="../ja/" class="on" aria-current="page">ホーム</a><a href="../ja/guide/">使い方</a><a href="https://github.com/slashkiko/lythe-releases/releases">リリース</a></nav>
+    <div class="lang"><a href="../" hreflang="en">EN</a><a href="../ja/" hreflang="ja" aria-current="true">日本語</a></div>
+  </div>
+</div></header>
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>PR のレビューを、下ごしらえから手伝う。</h1>
+      <p class="lead">Lythe は GitHub の PR をレビューする Mac アプリです。次に読む PR を示し、差分を変わったものごとにまとめます。Mac に Claude Code・Codex・GitHub Copilot CLI のどれかが入っていれば、それに PR をレビューさせることもできます。Lythe 自体は AI を持たず、API キーも要りません。</p>
+      <p class="req">Apple Silicon の Mac 専用（Intel Mac では動きません）。ログイン済みの GitHub CLI が要ります。</p>
+    </div>
+    <div class="install">
+      <div class="hd"><span>ターミナルで入れる</span><span class="mono" style="font-size:12px">v0.1.0</span></div>
+      <div class="cmd"><code>curl -fsSL https://slashkiko.github.io/lythe-releases/install.sh | sh</code><button class="copy" type="button" data-copied="コピーしました">コピー</button></div>
+      <div class="alt"><a href="https://github.com/slashkiko/lythe-releases/releases/latest">.dmg をダウンロード</a>することもできます。その場合は<a href="#install">入れ方</a>のコマンドを1つ足します。</div>
+    </div>
+  </div>
+  <div class="shot hero-shot"><img src="../shots/ja/window.webp" alt="Lythe" width="1600" height="960"></div>
+</div>
+<section class="wrap feat" id="try">
+  <h2>ここで触ってみる</h2>
+  <p class="sub">下の画面は、作り物のサンプル PR で動いている本物の Lythe の画面です。機能を選んで、そのまま押してみてください。AI の答えは、ここではあらかじめ用意したものです。</p>
+  <div class="try" data-lang="ja" data-up="../" data-narrow="画面写真を出しています。広い画面で開くと、ここでデモを操作できます。" data-fail="ここではデモを動かせなかったので、画面写真を出しています。">
+    <div class="scenes" role="tablist"><button type="button" role="tab" id="sc-list" data-scene="list" aria-controls="try-panel" aria-selected="true">次に読む PR</button><button type="button" role="tab" id="sc-graph" data-scene="graph" aria-controls="try-panel" aria-selected="false" tabindex="-1">スタックをグラフで</button><button type="button" role="tab" id="sc-semantic" data-scene="semantic" aria-controls="try-panel" aria-selected="false" tabindex="-1">Semantic diff</button><button type="button" role="tab" id="sc-reorder" data-scene="reorder" aria-controls="try-panel" aria-selected="false" tabindex="-1">AI で並べ替え</button><button type="button" role="tab" id="sc-auto" data-scene="auto" aria-controls="try-panel" aria-selected="false" tabindex="-1">自動レビュー</button><button type="button" role="tab" id="sc-chat" data-scene="chat" aria-controls="try-panel" aria-selected="false" tabindex="-1">別の AI に確かめさせる</button></div>
+    <div id="try-panel" role="tabpanel"><div class="tryp" data-panel="list"><div class="say"><h3>次に読む PR</h3><p>自分が関わる PR を、リポジトリをまたいで1つの一覧にし、優先度の順に並べます。どれから開くかが分かります。</p></div><div class="do"><span class="lab">やってみる</span><ol><li><span><b>全部</b> タブを開きます。PR が <b>読む</b>（自分のレビュー待ち）・<b>動く</b>（自分が動かす番）・<b>待つ</b>（ほかの人待ち）・<b>静観</b>（今は何もしなくてよい）に分かれて並びます。</span></li><li><span>PR を押すと、右に中身が開きます。</span></li><li><span><b>レビュー依頼</b> に替えると、頼まれた PR だけになります。</span></li></ol></div></div><div class="tryp" data-panel="graph" hidden><div class="say"><h3>スタックをグラフで</h3><p>ほかの PR のブランチを base にした PR（積み重なった PR）を1枚のグラフにします。これから読む PR の下に何があるかが見えます。</p></div><div class="do"><span class="lab">やってみる</span><ol><li><span><b>#102</b> を押します。その積み重なりが光り、ほかの PR は薄くなります。</span></li><li><span><b>関連 PR のみ</b> を外すと、ほかの PR が戻ります。</span></li><li><span>PR にポインタを重ねると、その優先度になった理由が出ます。</span></li></ol></div></div><div class="tryp" data-panel="semantic" hidden><div class="say"><h3>Semantic diff</h3><p>差分を関数や型ごとにまとめます。移しただけのコードは移動として出し、本当に変わった行だけを示します。AI ではなく構文の解析で行います。対象は TypeScript・Rust・Go・CSS と設定ファイル（JSON・YAML・TOML）で、それ以外はふつうの差分のままです。</p></div><div class="do"><span class="lab">やってみる</span><ol><li><span>右で <b>withRetry</b> を探します。別のファイルへ移ったうえで2行だけ変わっていて、その2行だけに色が付いています。</span></li><li><span>左の <b>Orders</b> を押すと、そのまとまりへ移ります。</span></li><li><span>上の <b>差分</b> に替えて、ふつうの差分と比べます。</span></li></ol></div></div><div class="tryp" data-panel="reorder" hidden><div class="say"><h3>AI で並べ替え</h3><p>大きな PR を AI CLI が振る舞いごとに切り分け、その順で差分を出します。まとまりごとに短い説明が付きます。</p></div><div class="do"><span class="lab">やってみる</span><ol><li><span><b>AI で並べ替え</b> を押します。ファイルが、読む順のまとまりに分かれます。</span></li><li><span>まとまりの横の <b>ⓘ</b> を押すと、何をなぜ変えたかが出ます。</span></li><li><span><b>元に戻す</b> で、並べ替える前と比べます。</span></li></ol><p class="donote">ここでは用意した答えが返ります。アプリでは、手元の AI CLI が分けます。</p></div></div><div class="tryp" data-panel="auto" hidden><div class="say"><h3>自動レビュー</h3><p>設定でオンにすると、Lythe を開いている間、レビューを頼まれた PR を手元の AI CLI が優先度の順にレビューします。push されるとやり直します。結果は Lythe の中にだけ残り、GitHub には投稿しません。</p></div><div class="do"><span class="lab">やってみる</span><ol><li><span><b>自動レビュー</b> タブに結果があります。判定と、その理由です。</span></li><li><span>下へ送ると、レビューの全文があります。</span></li><li><span>GitHub には何も投稿していません。送るかどうかは自分で決めます。</span></li></ol><p class="donote">このレビューは用意したものです。アプリでは、手元の AI CLI が書きます。</p></div></div><div class="tryp" data-panel="chat" hidden><div class="say"><h3>別の AI に確かめさせる</h3><p>1つの AI CLI に聞いた答えを、別の AI CLI に渡して確かめさせます。会話は同じ PR の中で別々のタブになります。</p></div><div class="do"><span class="lab">やってみる</span><ol><li><span>上のタブは別々の会話で、それぞれ別の AI CLI につながっています。</span></li><li><span>いま開いているのは3つ目のタブです。2つ目で Claude Code が出した答えを、Codex が確かめています。</span></li><li><span>質問を打って <b>⌘Enter</b> で送ります。</span></li></ol><p class="donote">ここでは用意した答えが返ります。アプリでは、選んだ CLI が PR を読んで答えます。</p></div></div></div>
+    <div class="demo">
+      <div class="demo-bar"><span class="demo-note">サンプルのデータです。GitHub にはつながりません。</span><a href="../demo/ja/" target="_blank" rel="noopener">別のタブで大きく開く ↗</a></div>
+      <div class="demo-view"><img class="demo-still" src="../shots/ja/list.webp" alt=""></div>
+    </div>
+  </div>
+</section>
+<section class="wrap gs" id="install">
+  <h2>入れ方</h2>
+  <p class="sub">5分ほどです。</p>
+  <ol class="steps"><li class="step"><span class="n">1</span><div><h3>Lythe を入れる</h3><p>ターミナルに貼り付けて実行します。/Applications に Lythe.app が入ります。</p><div class="term"><div class="cmd"><code>curl -fsSL https://slashkiko.github.io/lythe-releases/install.sh | sh</code><button class="copy" type="button" data-copied="コピーしました">コピー</button></div></div><p style="margin-top:10px">.dmg から入れた場合は、Apple の署名が無いため、初めて開く前に1回だけ次を実行します。</p><div class="term"><div class="cmd"><code>xattr -dr com.apple.quarantine /Applications/Lythe.app</code><button class="copy" type="button" data-copied="コピーしました">コピー</button></div></div></div></li><li class="step"><span class="n">2</span><div><h3>GitHub CLI にログインする</h3><p>Lythe は gh のログインで GitHub とやり取りします（PR を読む、送ると決めたレビューを送る）。トークンは毎回 gh から受け取り、保存しません。</p><div class="term"><div class="cmd"><code>brew install gh</code><button class="copy" type="button" data-copied="コピーしました">コピー</button></div></div><p style="margin-top:10px">Homebrew が無いときは cli.github.com にほかの入れ方があります。</p><div class="term"><div class="cmd"><code>gh auth login</code><button class="copy" type="button" data-copied="コピーしました">コピー</button></div></div></div></li><li class="step"><span class="n">3</span><div><h3>Lythe を開く</h3><p>自分が書いた PR、担当になった PR、レビューを頼まれた PR が、リポジトリを問わず並びます。ほかのリポジトリや条件を足すときは、設定（⌘ ,）の「対象と検索条件」を開きます。</p></div></li><li class="step"><span class="n">4</span><div><h3>AI CLI を入れる（任意）</h3><p>Chat・AI で並べ替え・自動レビュー（オンにするまで動きません）は、Mac に入っている Claude Code・Codex・GitHub Copilot CLI のどれかを使います。1つを入れてログインしておきます。Lythe は各 CLI の設定とアカウントのまま動かすので、使った分はその CLI の契約に数えられます。Lythe に API キーは入れません。</p></div></li></ol>
+  <p style="margin-top:4px;color:var(--fg-2);font-size:14px">Lythe は自動では更新しません。更新するときは、メニューバーの <b>Lythe › Check for Updates…</b> を選びます。</p>
+  <details class="trouble"><summary>うまくいかないとき</summary><dl><dt>「“Lythe”は壊れているため開けません」と出る</dt><dd>Apple の署名が無いアプリを macOS が止めています。<code>xattr -dr com.apple.quarantine /Applications/Lythe.app</code> を実行してから開き直します。</dd><dt>gh コマンドが見つからないと出る</dt><dd><code>brew install gh</code> で GitHub CLI を入れ、<code>gh auth login</code> を実行してから Lythe を開き直します。</dd><dt>一覧が空</dt><dd>条件に当てはまる、開いている（open の）PR がまだありません。設定の「対象と検索条件」にリポジトリを足します。</dd></dl></details>
+  <p style="margin-top:28px">入れたら、<a href="guide/">使い方</a>で最初のレビューまでを順に見られます。</p>
+</section></main>
+<footer class="sfoot"><div class="wrap"><span>Lythe 0.1.0</span><a href="https://github.com/slashkiko/lythe-releases/releases">リリースノート</a><a href="https://github.com/slashkiko/lythe-releases/issues">問題を報告</a></div></footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
