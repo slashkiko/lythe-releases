@@ -37,7 +37,7 @@ document.querySelectorAll("img[data-fit]").forEach((img) => {
 
   const fit = () => {
     if (!frame) return;
-    const scale = Math.min(1, view.clientWidth / W);
+    const scale = view.clientWidth / W;
     frame.style.width = W + "px";
     frame.style.height = H + "px";
     frame.style.transform = `scale(${scale})`;
